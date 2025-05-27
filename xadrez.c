@@ -50,9 +50,9 @@ int main() {
 
     // Implementação de Movimentação da Torre
     printf("Movimentação da Torre:\n");
-    for (int torre = 0; torre < MAX_MOVES_TORRE; torre++)
+    for (int torre = 0; torre < MAX_MOVES_TORRE; torre++)// Inicializando variável Torre e Condição para movimentar a Torre com incremento
     {
-        printf("Torre moveu: %d casas para a direita.\n", torre + 1);
+        printf("Torre moveu: %d casas Horizontal para a direita.\n", torre + 1);
     }
     printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
     printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
@@ -63,7 +63,7 @@ int main() {
     do
     { printf("Bispo se moveu: %d casas em diagonal cima-direita\n", bispo + 1);
         bispo++; // Incrementando o movimento do Bispo
-    } while (bispo < MAX_MOVES_BISPO);    
+    } while (bispo < MAX_MOVES_BISPO);   // Condição para movimentar o Bispo
 
 printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
 printf("\n"); // Adicionando uma linha em branco para melhor legibilidadese
@@ -71,9 +71,9 @@ printf("\n"); // Adicionando uma linha em branco para melhor legibilidadese
 
     // Implementação de Movimentação da Rainha
     printf("Movimentação da Rainha:\n");
-    while (rainha < MAX_MOVES_RAINHA) // Corrigido para uma condição válida
+    while (rainha < MAX_MOVES_RAINHA) // Condição para movimentar a rainha
     {
-        printf("Rainha se moveu: %d casas Horizontal para esquerda.\n", rainha + 1);
+        printf("Rainha se moveu: %d casas Horizontal para a esquerda.\n", rainha + 1);
         rainha++; // Incrementando o movimento da Rainha
     }
     
