@@ -41,7 +41,7 @@ int main() {
     // Nível Novato - Movimentação das Peças
     // Definindo constantes para o número de casas que cada peça pode se mover
     const int MAX_MOVES_TORRE = 5;   // Torre pode se mover até 5 casas na horizontal ou vertical
-    const int MAX_MOVES_BISPO = 9; // Bispo pode se mover até 5 casas em diagonal (O Bispo só pode se mover até 5 casas em uma direção, consideranco que ele se move em diagonal mas o movimento não é linear é "curvado" o total de movimentos é 9)
+    const int MAX_MOVES_BISPO = 5; // Bispo pode se mover até 5 casas em diagonal
     const int MAX_MOVES_RAINHA = 8;  // Rainha pode se mover até 8 casas em qualquer direção
 
     int bispo = 0; // Inicializando a variável Bispo
@@ -52,7 +52,7 @@ int main() {
     printf("Movimentação da Torre:\n");
     for (int torre = 0; torre < MAX_MOVES_TORRE; torre++)
     {
-        printf("Torre se moveu %d casas para a direita.\n", torre + 1);
+        printf("Torre moveu: %d casas para a direita.\n", torre + 1);
     }
     printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
     printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
@@ -60,33 +60,21 @@ int main() {
 
     // Implementação de Movimentação do Bispo
     // Simulando a movimentação do Bispo em diagonal
-    printf("Movimentação do Bispo:\n");
     do
-    { printf("Bispo se moveu:\n");
-
-            if (bispo % 2 == 0) {
-                printf("Cima\n");
-            } else {
-                printf("Direita\n");
-            }
+    { printf("Bispo se moveu: %d casas em diagonal cima-direita\n", bispo + 1);
         bispo++; // Incrementando o movimento do Bispo
-    } while (bispo <= MAX_MOVES_BISPO);
-    printf("Bispo Moveu 5 Casas na Diagonal\n");
-    
+    } while (bispo < MAX_MOVES_BISPO);    
 
 printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
-printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
+printf("\n"); // Adicionando uma linha em branco para melhor legibilidadese
 
 
     // Implementação de Movimentação da Rainha
     printf("Movimentação da Rainha:\n");
     while (rainha < MAX_MOVES_RAINHA) // Corrigido para uma condição válida
     {
-        printf("Rainha se moveu %d casas para esquerda.\n", rainha + 1);
+        printf("Rainha se moveu: %d casas Horizontal para esquerda.\n", rainha + 1);
         rainha++; // Incrementando o movimento da Rainha
-        if (rainha >= MAX_MOVES_RAINHA) {
-            break; // Parar quando atingir o máximo de movimentos da Rainha
-        }
     }
     
     return 0;
