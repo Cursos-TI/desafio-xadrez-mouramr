@@ -41,7 +41,7 @@ int main() {
     // Nível Novato - Movimentação das Peças
     // Definindo constantes para o número de casas que cada peça pode se mover
     const int MAX_MOVES_TORRE = 5;   // Torre pode se mover até 5 casas na horizontal ou vertical
-    const int MAX_MOVES_BISPO = 9; // Bispo pode se mover até 5 casas em diagonal
+    const int MAX_MOVES_BISPO = 9; // Bispo pode se mover até 5 casas em diagonal (O Bispo só pode se mover até 5 casas em uma direção, consideranco que ele se move em diagonal mas o movimento não é linear é "curvado" o total de movimentos é 9)
     const int MAX_MOVES_RAINHA = 8;  // Rainha pode se mover até 8 casas em qualquer direção
 
     int bispo = 0; // Inicializando a variável Bispo
