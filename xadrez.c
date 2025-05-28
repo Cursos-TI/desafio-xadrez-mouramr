@@ -1,84 +1,83 @@
-// #include <stdio.h>
-
-// // Desafio de Xadrez - MateCheck
-// // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
-
-// int main() {
-//     // Nível Novato - Movimentação das Peças
-//     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
-
-//     // Implementação de Movimentação do Bispo
-//     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-
-//     // Implementação de Movimentação da Torre
-//     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-//     // Implementação de Movimentação da Rainha
-//     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-//     // Nível Aventureiro - Movimentação do Cavalo
-//     // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-//     // Um loop pode representar a movimentação horizontal e outro vertical.
-
-//     // Nível Mestre - Funções Recursivas e Loops Aninhados
-//     // Sugestão: Substitua as movimentações das peças por funções recursivas.
-//     // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-//     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-//     // Inclua o uso de continue e break dentro dos loops.
-
-//     return 0;
-// }
-
-
-
-//Jogo Xadrez Novato, movimentos básicos de Torre, Bispo e Rainha.
-
 #include <stdio.h>
-int main() {
-    
-    // Nível Novato - Movimentação das Peças
-    // Definindo constantes para o número de casas que cada peça pode se mover
-    const int MAX_MOVES_TORRE = 5;   // Torre pode se mover até 5 casas na horizontal ou vertical
-    const int MAX_MOVES_BISPO = 5; // Bispo pode se mover até 5 casas em diagonal
-    const int MAX_MOVES_RAINHA = 8;  // Rainha pode se mover até 8 casas em qualquer direção
 
-    int bispo = 0; // Inicializando a variável Bispo
-    int rainha = 0; // Inicializando a variável Rainha
+// --- Recursivo: TORRE (direita) ---
+void movimentoTorre(int atual, int max_movimento) {
+    if (atual > max_movimento) return;
+    printf("Direita\n");
+    movimentoTorre(atual + 1, max_movimento);
+}
 
+// --- Recursivo: BISPO (diagonal cima-direita) ---
+void movimentoBispo(int atual, int max_movimento) {
+    if (atual > max_movimento) return;
+    printf("Cima\n");
+    printf("Direita\n");
+    movimentoBispo(atual + 1, max_movimento);
+}
 
-    // Implementação de Movimentação da Torre
-    printf("Movimentação da Torre:\n");
-    for (int torre = 0; torre < MAX_MOVES_TORRE; torre++)// Inicializando variável Torre e Condição para movimentar a Torre com incremento
-    {
-        printf("Torre moveu: %d casas Horizontal para a direita.\n", torre + 1);
+// --- Recursivo: RAINHA (esquerda) ---
+void movimentoRainha(int atual, int max_movimento) {
+    if (atual > max_movimento) return;
+    printf("Esquerda\n");
+    movimentoRainha(atual + 1, max_movimento);
+}
+
+// --- BISPO (loops aninhados: vertical -> horizontal, diagonal cima-direita) ---
+void bispoLoopsAninhados(int max_movimento) {
+    for (int y = 1; y <= max_movimento; y++) { // Vertical
+        for (int x = 1; x <= max_movimento; x++) { // Horizontal
+            if (x == y) {
+                printf("Cima\n");
+                printf("Direita\n");
+            }
+        }
     }
-    printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
-    printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
+}
 
+// --- Cavalo: movimentos em "L" usando loops complexos ---
+void movimentoCavalo(int tentativas) {
+    for (int i = 0; i < tentativas; i++) {
+        int casasVerticais = 2;
+        int casasHorizontais = 1;
 
-    // Implementação de Movimentação do Bispo
-    // Simulando a movimentação do Bispo em diagonal
-    do
-    { printf("Bispo se moveu: %d casas em diagonal cima-direita\n", bispo + 1);
-        bispo++; // Incrementando o movimento do Bispo
-    } while (bispo < MAX_MOVES_BISPO);   // Condição para movimentar o Bispo
+        for (int v = 0; v < casasVerticais; v++) {
+            printf("Cima\n");
+        }
 
-printf("\n"); // Adicionando uma linha em branco para melhor legibilidade
-printf("\n"); // Adicionando uma linha em branco para melhor legibilidadese
+        for (int h = 0; h < casasHorizontais; h++) {
+            printf("Direita\n");
+        }
 
-
-    // Implementação de Movimentação da Rainha
-    printf("Movimentação da Rainha:\n");
-    while (rainha < MAX_MOVES_RAINHA) // Condição para movimentar a rainha
-    {
-        printf("Rainha se moveu: %d casas Horizontal para a esquerda.\n", rainha + 1);
-        rainha++; // Incrementando o movimento da Rainha
+        printf("---\n"); // Separador visual pra cada movimento completo do cavalo
     }
-    
-    return 0;
 }
 
 
-//Jogo Xadrez Aventureiro, ....
+int main() {
+    const int MAX_MOV_TORRE = 5;
+    const int MAX_MOV_BISPO = 3;
+    const int MAX_MOV_RAINHA = 8;
+
+    printf("Movimentos da TORRE:\n");
+    movimentoTorre(1, MAX_MOV_TORRE);
+    printf("\n");
+
+    printf("Movimentos do BISPO (Recursivo):\n");
+    movimentoBispo(1, MAX_MOV_BISPO);
+    printf("\n");
+
+    printf("Movimentos do BISPO (Loops Aninhados):\n");
+    bispoLoopsAninhados(MAX_MOV_BISPO);
+    printf("\n");
+
+    printf("Movimentos da RAINHA:\n");
+    movimentoRainha(1, MAX_MOV_RAINHA);
+    printf("\n");
+
+    printf("Movimentos do CAVALO:\n");
+    const int MOV_CAVALO = 1; // Quantas vezes o cavalo fará o movimento "em L"
+    movimentoCavalo(MOV_CAVALO);
+    printf("\n");
+
+    return 0;
+}
